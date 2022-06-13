@@ -1,24 +1,23 @@
+import * as React from 'react'
+import HomeScreen from './screens/HomeScreen.js'
+import HeroesScreen from './screens/HeroesScreen'
+import CommunityScreen from './screens/CommunityScreen.js'
+
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>First up!</Text>
+    <NavigationContainer>
       <StatusBar style="auto" />
-    </View>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Heroes" component={HeroesScreen} />
+        <Stack.Screen name="Community" component={CommunityScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  text: {
-    color: 'white',
-  },
-})
