@@ -1,14 +1,27 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
+
+import headerImage from 'C:/Users/fredr/my-react-native-project/assets/wd-bro.jpg'
+import newsImage from 'C:/Users/fredr/my-react-native-project/assets/win.jpg'
 
 export default function Home() {
   const navigation = useNavigation()
 
   return (
     <>
-      <View style={styles.topContainer}>
-        <Text style={styles.text}>Hello there!</Text>
+      <View>
+        <Image style={styles.imageTop} source={headerImage}></Image>
+      </View>
+      <View style={styles.newsContainer}>
+        <Text style={styles.newsHeader}>Latest News</Text>
+        <Image style={styles.newsImage} source={newsImage}></Image>
+        <Text style={styles.newsText}>
+          The Stockholm Major Champions 24 Maj 2022
+        </Text>
+      </View>
+      <View style={styles.heroContainer}>
+        <Text style={styles.heroText}>Check out all the heroes of Dota!</Text>
         <Button
           style={styles.button}
           title="Go to heroes"
@@ -30,20 +43,56 @@ const styles = StyleSheet.create({
   button: {},
 
   communityContainer: {
+    alignItems: 'center',
+    backgroundColor: '#222222',
+    borderBottomColor: '#ffc0cb',
+    borderBottomWidth: 0.5,
+    color: '#ffc0cb',
     flex: 1,
-    backgroundColor: 'grey',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 
-  topContainer: {
+  heroContainer: {
+    alignItems: 'center',
+    backgroundColor: '#222222',
+    borderTopColor: '#ffc0cb',
+    borderTopWidth: 0.5,
     flex: 2,
-    backgroundColor: 'white',
-    alignItems: 'center',
     justifyContent: 'center',
   },
 
-  text: {
+  heroText: {
+    color: '#ffc0cb',
+    fontSize: 15,
     margin: 10,
+  },
+
+  newsContainer: {
+    alignItems: 'center',
+    backgroundColor: '#222222',
+    flex: 3,
+  },
+
+  newsImage: {
+    height: 100,
+    width: 300,
+  },
+
+  newsHeader: {
+    borderBottomColor: '#ffc0cb',
+    borderBottomWidth: 1,
+    color: '#ffc0cb',
+    fontSize: 25,
+    margin: 10,
+  },
+
+  newsText: {
+    color: '#ffc0cb',
+    marginTop: 10,
+  },
+
+  imageTop: {
+    height: 170,
+    width: 'auto',
   },
 })
