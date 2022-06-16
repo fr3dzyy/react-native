@@ -9,6 +9,7 @@ import {
   Text,
 } from 'react-native'
 
+import { LinearGradient } from 'expo-linear-gradient'
 import { useEffect, useState } from 'react'
 
 export default function Heroes() {
@@ -25,6 +26,10 @@ export default function Heroes() {
   return (
     <>
       <SafeAreaView style={styles.container}>
+        <LinearGradient
+          colors={['rgba(0,0,0,0.8)', 'transparent']}
+          style={styles.background}
+        />
         <Text style={styles.h1}>Heroes of Dota</Text>
         <Text style={styles.paragraph}>
           Heroes are the essential element of Dota 2, as the course of the match
@@ -67,6 +72,14 @@ export default function Heroes() {
 }
 
 const styles = StyleSheet.create({
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 300,
+  },
+
   container: {
     alignItems: 'center',
     backgroundColor: '#222222',
@@ -79,6 +92,7 @@ const styles = StyleSheet.create({
     color: '#9e9e9e',
     fontSize: 20,
     margin: 10,
+    paddingLeft: 10,
   },
 
   h1: {
@@ -90,6 +104,7 @@ const styles = StyleSheet.create({
   },
 
   img: {
+    borderRadius: 10,
     height: 80,
     marginLeft: 20,
     width: 120,
