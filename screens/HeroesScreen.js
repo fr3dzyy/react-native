@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react'
 export default function Heroes() {
   const [heroes, setHeroes] = useState([])
 
-  const baseUrl = 'https://steamcdn-a.akamaihd.net'
-
   useEffect(() => {
     axios.get('https://api.opendota.com/api/heroStats').then((response) => {
       setHeroes(response.data)
@@ -31,12 +29,13 @@ export default function Heroes() {
         </Text>
         <FlatList
           data={heroes}
+          style={styles.heroList}
           renderItem={({ item }) => (
             <>
               <Text style={styles.heroText}>{item.localized_name}</Text>
               <Image
                 alt="Hero Picture"
-                source={`${baseUrl + item.img}`}
+                source={{ uri: 'https://steamcdn-a.akamaihd.net' + item.img }}
                 style={styles.img}
               />
             </>
@@ -55,6 +54,8 @@ const styles = StyleSheet.create({
     flex: 2,
   },
 
+  heroList: {},
+
   heroText: {
     color: '#9e9e9e',
     fontSize: 20,
@@ -62,6 +63,8 @@ const styles = StyleSheet.create({
   },
 
   h1: {
+    borderBottomColor: '#ffc0cb',
+    borderBottomWidth: 1,
     color: '#ffc0cb',
     fontSize: 40,
     marginVertical: 15,
