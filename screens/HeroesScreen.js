@@ -9,6 +9,7 @@ import {
   Text,
 } from 'react-native'
 
+import Hyperlink from 'react-native-hyperlink'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useEffect, useState } from 'react'
 
@@ -34,13 +35,23 @@ export default function Heroes() {
         <Text style={styles.paragraph}>
           Heroes are the essential element of Dota 2, as the course of the match
           is dependent on their intervention. During a match, two opposing teams
-          select five out of 123 heroes that accumulate Experience Experience
-          and Gold Gold to grow stronger and gain new abilities in order to
-          destroy the opponents Ancient. Most heroes have a distinct role that
-          defines how they affect the battlefield, though many heroes can
-          perform multiple roles. A heros appearance can be modified with
-          equipment.
+          select five out of 123 heroes that accumulate Experience and Gold to
+          grow stronger and gain new abilities in order to destroy the opponents
+          Ancient. Most heroes have a distinct role that defines how they affect
+          the battlefield, though many heroes can perform multiple roles. A
+          heros appearance can be modified with equipment.
         </Text>
+        <Hyperlink
+          linkDefault={true}
+          linkStyle={{ color: '#2980b9' }}
+          linkText={(url) =>
+            url === 'https://dota2.fandom.com/wiki/Role' ? 'here' : url
+          }
+        >
+          <Text style={styles.paragraph}>
+            Read more about roles https://dota2.fandom.com/wiki/Role !
+          </Text>
+        </Hyperlink>
         <Text style={styles.paragraphHeroes}>Show heroes!</Text>
         <Switch
           trackColor={{ false: '#767577', true: '#222222' }}
