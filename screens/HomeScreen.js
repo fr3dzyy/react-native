@@ -2,8 +2,8 @@ import { Button, Image, StyleSheet, Text, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 
-import headerImage from 'C:/Users/fredr/my-react-native-project/assets/wd-bro.jpg'
-import newsImage from 'C:/Users/fredr/my-react-native-project/assets/win.jpg'
+import headerImage from '../assets/wd-bro.jpg'
+import newsImage from '../assets/win.jpg'
 
 export default function Home() {
   const navigation = useNavigation()

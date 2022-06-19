@@ -38,7 +38,7 @@ export default function Community() {
       <DrawerLayoutAndroid
         ref={drawer}
         drawerWidth={300}
-        drawerPosition={'right'}
+        drawerPosition="right"
         renderNavigationView={navigationView}
       >
         <View style={styles.buttonContainer}>
