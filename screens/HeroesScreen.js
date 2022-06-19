@@ -1,15 +1,18 @@
 import axios from 'axios'
 
 import {
+  Button,
   FlatList,
   Image,
   SafeAreaView,
   StyleSheet,
   Switch,
   Text,
+  View,
 } from 'react-native'
 
 import Hyperlink from 'react-native-hyperlink'
+import Modal from 'react-native-modal'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useEffect, useState } from 'react'
 
@@ -17,6 +20,11 @@ export default function Heroes() {
   const [heroes, setHeroes] = useState([])
   const [isEnabled, setIsEnabled] = useState(false)
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
+
+  const [isModalVisible, setModalVisible] = useState(false)
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible)
+  }
 
   useEffect(() => {
     axios.get('https://api.opendota.com/api/heroStats').then((response) => {
@@ -76,6 +84,27 @@ export default function Heroes() {
             )}
             keyExtractor={(heroes) => heroes.id}
           />
+        )}
+        {!isEnabled && (
+          <View>
+            <Button title="Show modal" onPress={toggleModal} />
+
+            <Modal
+              animationInTiming={3000}
+              animationOutTiming={800}
+              animationIn="slideInDown"
+              animationOut="slideOutUp"
+              isVisible={isModalVisible}
+            >
+              <View>
+                <Text style={styles.paragraph}>
+                  Hello there! This is my modal. 😊
+                </Text>
+
+                <Button title="Hide modal" onPress={toggleModal} />
+              </View>
+            </Modal>
+          </View>
         )}
       </SafeAreaView>
     </>
